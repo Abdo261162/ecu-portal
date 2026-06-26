@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        /* Top Header Area */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+        }
+        .logo-placeholder {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8b1e1e; /* Matching the red tones in the ECU logo */
+        }
+        .logo-placeholder span {
+            color: #777;
+            font-size: 14px;
+            display: block;
+            font-weight: normal;
+        }
+        .welcome-text {
+            font-size: 14px;
+            color: #333;
+        }
+        .welcome-text strong {
+            font-weight: bold;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #28276b; /* The deep blue/purple menu bar color */
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+        }
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 22px;
+            height: 16px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .hamburger-icon span {
+            display: block;
+            height: 3px;
+            background-color: #f0a330; /* Orange bars */
+            border-radius: 2px;
+        }
+        .nav-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            padding: 20px;
+        }
+
+        /* Student Data Card */
+        .data-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .card-header {
+            background-color: #eaeaea;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: #555;
+        }
+        .orange-dots {
+            display: flex;
+            gap: 4px;
+            margin-right: 10px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #f0a330;
+            border-radius: 50%;
+        }
+
+        /* Grid Layout for Student Fields */
+        .card-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Split into 2 equal columns */
+            gap: 15px 40px;
+            padding: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .label {
+            font-weight: bold;
+            color: #000;
+            width: 150px; /* Aligns the colons perfectly */
+            flex-shrink: 0;
+        }
+        .value {
+            color: #444;
+            flex-grow: 1;
+            display: flex;
+        }
+        .value::before {
+            content: ": ";
+            margin-right: 8px;
+            font-weight: normal;
+            color: #000;
+        }
+        .link-id {
+            color: #28276b;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        /* Responsive tweaks for mobile viewports */
+        @media (max-width: 768px) {
+            .card-body {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <div class="header-container">
+        <div class="logo-placeholder">
+            ECU
+            <span>EGYPTIAN CHINESE UNIVERSITY</span>
+        </div>
+        <div class="welcome-text">Welcome <strong>Abdelrahman</strong></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-title">Home Page</div>
+    </div>
+
+    <!-- Container for the form card -->
+    <div class="main-content">
+        <div class="data-card">
+            <div class="card-header">
+                <div class="orange-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                Student Data
+            </div>
+            
+            <div class="card-body">
+                <!-- Left Column Fields -->
+                <div>
+                    <div class="info-row">
+                        <span class="label">Student Name</span>
+                        <span class="value">Abdelrahman Alaa Mohamed Amin Elsayed Ramadan</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Faculty</span>
+                        <span class="value">Faculty of Pharmacy and Drug Technology</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Student Major</span>
+                        <span class="value">Pharm D</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Enrollment Status</span>
+                        <span class="value">Enrolled</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Total Passed CH</span>
+                        <span class="value"><strong>35.00</strong></span>
+                    </div>
+                </div>
+
+                <!-- Right Column Fields -->
+                <div>
+                    <div class="info-row">
+                        <span class="label">Student ID</span>
+                        <span class="value"><span class="link-id">492500595</span></span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Degree</span>
+                        <span class="value">B.Sc.</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Level</span>
+                        <span class="value">Level 1</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">Academic Status</span>
+                        <span class="value">Regular</span>
+                    </div>
+                    <div class="info-row" style="margin-top: 15px;">
+                        <span class="label">CGPA</span>
+                        <span class="value"><strong>3.29</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
