@@ -3,233 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal Clone</title>
+    <title>Student Portal</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            font-family: Arial, sans-serif;
         }
 
-        /* Top Header Area */
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #fff;
-        }
-        .logo-placeholder {
-            font-size: 24px;
-            font-weight: bold;
-            color: #8b1e1e; /* Matching the red tones in the ECU logo */
-        }
-        .logo-placeholder span {
-            color: #777;
-            font-size: 14px;
-            display: block;
-            font-weight: normal;
-        }
-        .welcome-text {
-            font-size: 14px;
+        body {
+            background-color: #e6e6e6;
             color: #333;
-        }
-        .welcome-text strong {
-            font-weight: bold;
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: #28276b; /* The deep blue/purple menu bar color */
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-        }
-        .hamburger-icon {
+            font-size: 12px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            width: 22px;
-            height: 16px;
-            margin-right: 15px;
-            cursor: pointer;
-        }
-        .hamburger-icon span {
-            display: block;
-            height: 3px;
-            background-color: #f0a330; /* Orange bars */
-            border-radius: 2px;
-        }
-        .nav-title {
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        /* Main Content Grid */
-        .main-content {
-            padding: 20px;
-        }
-
-        /* Student Data Card */
-        .data-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .card-header {
-            background-color: #eaeaea;
-            padding: 10px 15px;
-            border-bottom: 1px solid #ddd;
-            display: flex;
             align-items: center;
-            font-size: 15px;
+            min-height: 100vh;
+        }
+
+        /* Top Header Wrapper */
+        .header-wrapper {
+            background-color: #fff;
+            width: 100%;
+            max-width: 1200px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 55px;
+            display: block;
+        }
+
+        .user-info-text {
+            text-align: right;
+            line-height: 1.5;
             color: #555;
         }
-        .orange-dots {
-            display: flex;
-            gap: 4px;
-            margin-right: 10px;
-        }
-        .dot {
-            width: 8px;
-            height: 8px;
-            background-color: #f0a330;
-            border-radius: 50%;
+
+        .user-info-text strong {
+            color: #000;
         }
 
-        /* Grid Layout for Student Fields */
-        .card-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Split into 2 equal columns */
-            gap: 15px 40px;
+        .faculty-title {
+            font-weight: bold;
+            color: #444;
+            font-size: 11px;
+        }
+
+        /* Dark Blue Horizontal Bar */
+        .blue-bar {
+            background-color: #2c366a;
+            width: 100%;
+            max-width: 1200px;
+            height: 35px;
+        }
+
+        /* Main Content Workspace */
+        .main-container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 1200px;
             padding: 20px;
-        }
-        .info-row {
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
             display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            line-height: 1.6;
+            flex-direction: column;
+            gap: 20px;
+            flex-grow: 1;
         }
+
+        /* Section Container Box */
+        .section-box {
+            border: 1px solid #d3d3d3;
+            border-radius: 4px;
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .section-box.empty-box {
+            min-height: 180px;
+        }
+
+        /* Header Style with double dots matching image */
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            font-size: 13px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title::before {
+            content: "●●";
+            color: #f1b82d;
+            font-size: 10px;
+            letter-spacing: -1px;
+        }
+
+        /* Data Grid Layout */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 12px;
+            column-gap: 40px;
+        }
+
+        .data-row {
+            display: flex;
+            align-items: flex-start;
+        }
+
         .label {
             font-weight: bold;
-            color: #000;
-            width: 150px; /* Aligns the colons perfectly */
+            width: 140px;
             flex-shrink: 0;
         }
+
+        .separator {
+            width: 15px;
+            text-align: left;
+        }
+
         .value {
             color: #444;
             flex-grow: 1;
-            display: flex;
         }
-        .value::before {
-            content: ": ";
-            margin-right: 8px;
+
+        /* Specific fix to remove blue text and underline from Student ID */
+        .plain-id {
+            color: #444;
+            text-decoration: none;
             font-weight: normal;
-            color: #000;
         }
-        .link-id {
-            color: #28276b;
-            text-decoration: underline;
-            cursor: pointer;
+
+        /* Notification List */
+        .notif-list {
+            list-style-type: square;
+            margin-left: 20px;
+            color: #444;
+            line-height: 1.6;
         }
-        
-        /* Responsive tweaks for mobile viewports */
+
         @media (max-width: 768px) {
-            .card-body {
+            .data-grid {
                 grid-template-columns: 1fr;
+            }
+            .header-wrapper {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+            }
+            .user-info-text {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Header -->
-    <div class="header-container">
-        <div class="logo-placeholder">
-            ECU
-            <span>EGYPTIAN CHINESE UNIVERSITY</span>
-        </div>
-        <div class="welcome-text">Welcome <strong>Abdelrahman</strong></div>
-    </div>
-
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <div class="hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="nav-title">Home Page</div>
-    </div>
-
-    <!-- Container for the form card -->
-    <div class="main-content">
-        <div class="data-card">
-            <div class="card-header">
-                <div class="orange-dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-                Student Data
+    <!-- Header Block -->
+    <div class="header-wrapper">
+        <div class="logo-area">
+            <!-- Keeps the placeholder look crisp -->
+            <div style="font-weight: 900; font-size: 24px; color: #b72025; font-family: sans-serif; display: flex; align-items: center; gap: 5px;">
+                <span style="font-size: 32px; color: #555;">▲</span> ECU
             </div>
+        </div>
+        <div class="user-info-text">
+            <div>Welcome: <strong>Abdelrahman Amr Mohamed Amin Elsayed Ramadan</strong> | Student View</div>
+            <div class="faculty-title">▶ FACULTY OF PHARMACY AND DRUG TECHNOLOGY</div>
+            <div style="font-size: 11px; color: #777;">2025/2026 - Spring</div>
+        </div>
+    </div>
+
+    <!-- Accent Color Stripe -->
+    <div class="blue-bar"></div>
+
+    <!-- Main Workspace -->
+    <div class="main-container">
+
+        <!-- Block 1: Student Studies Data -->
+        <div class="section-box">
+            <div class="section-title">Student Data</div>
             
-            <div class="card-body">
-                <!-- Left Column Fields -->
-                <div>
-                    <div class="info-row">
-                        <span class="label">Student Name</span>
-                        <span class="value">Abdelrahman Alaa Mohamed Amin Elsayed Ramadan</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Faculty</span>
-                        <span class="value">Faculty of Pharmacy and Drug Technology</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Student Major</span>
-                        <span class="value">Pharm D</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Enrollment Status</span>
-                        <span class="value">Enrolled</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Total Passed CH</span>
-                        <span class="value"><strong>35.00</strong></span>
-                    </div>
+            <div class="data-grid">
+                <!-- Left Column -->
+                <div class="data-row">
+                    <div class="label">Student Name</div>
+                    <div class="separator">:</div>
+                    <div class="value">Abdelrahman Amr Mohamed Amin Elsayed Ramadan</div>
+                </div>
+                <!-- Right Column -->
+                <div class="data-row">
+                    <div class="label">Student ID</div>
+                    <div class="separator">:</div>
+                    <!-- Completely plain style wrapper applied here -->
+                    <div class="value"><span class="plain-id">202302322</span></div>
                 </div>
 
-                <!-- Right Column Fields -->
-                <div>
-                    <div class="info-row">
-                        <span class="label">Student ID</span>
-                        <span class="value"><span class="link-id">492500595</span></span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Degree</span>
-                        <span class="value">B.Sc.</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Level</span>
-                        <span class="value">Level 1</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">Academic Status</span>
-                        <span class="value">Regular</span>
-                    </div>
-                    <div class="info-row" style="margin-top: 15px;">
-                        <span class="label">CGPA</span>
-                        <span class="value"><strong>3.29</strong></span>
-                    </div>
+                <!-- Left Column -->
+                <div class="data-row">
+                    <div class="label">Faculty</div>
+                    <div class="separator">:</div>
+                    <div class="value">Faculty of Pharmacy and Drug Technology</div>
+                </div>
+                <!-- Right Column -->
+                <div class="data-row">
+                    <div class="label">Degree</div>
+                    <div class="separator">:</div>
+                    <div class="value">B.Sc.</div>
+                </div>
+
+                <!-- Left Column -->
+                <div class="data-row">
+                    <div class="label">Student Major</div>
+                    <div class="separator">:</div>
+                    <div class="value">Pharmacy</div>
+                </div>
+                <!-- Right Column -->
+                <div class="data-row">
+                    <div class="label">Level</div>
+                    <div class="separator">:</div>
+                    <div class="value">Level 1</div>
+                </div>
+
+                <!-- Left Column -->
+                <div class="data-row">
+                    <div class="label">Enrollment Status</div>
+                    <div class="separator">:</div>
+                    <div class="value">Enrolled</div>
+                </div>
+                <!-- Right Column -->
+                <div class="data-row">
+                    <div class="label">Academic Status</div>
+                    <div class="separator">:</div>
+                    <div class="value">Regular</div>
+                </div>
+
+                <!-- Left Column -->
+                <div class="data-row">
+                    <div class="label">Total Passed CH</div>
+                    <div class="separator">:</div>
+                    <div class="value"><strong>35.00</strong></div>
+                </div>
+                <!-- Right Column -->
+                <div class="data-row">
+                    <div class="label">CGPA</div>
+                    <div class="separator">:</div>
+                    <!-- Requested Target Update -->
+                    <div class="value"><strong>3.29</strong></div>
                 </div>
             </div>
         </div>
+
+        <!-- Block 2: Notifications Area -->
+        <div class="section-box">
+            <div class="section-title">Notification</div>
+            <ul class="notif-list">
+                <li>Courses Approved for the Student</li>
+            </ul>
+        </div>
+
+        <!-- Block 3: Empty Container Base Box -->
+        <div class="section-box empty-box"></div>
+
     </div>
 
 </body>
-</html>
+    </html>
+    
